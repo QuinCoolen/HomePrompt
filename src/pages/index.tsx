@@ -1,22 +1,10 @@
+
+
 export default function Home() {
   return (
     <>
-      <div className="h-screen flex items-center justify-center">
-        <div className="max-w-md w-full h-full px-4 sm:px-6 lg:px-8">
-          <div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-              Sign in to your account
-            </h2>
-            <p className="mt-2 text-center text-sm text-gray-600">
-              Or{" "}
-              <a
-                href="#"
-                className="font-medium text-green-600 hover:text-green-500"
-              >
-                start your 14-day free trial
-              </a>
-            </p>
-          </div>
+      <div className="min-w-full h-screen flex items-center justify-center">
+        <div className="max-w-md w-full h-full">
           <form
             className="mt-8 space-y-6 h-full flex flex-col"
             action="#"
@@ -35,7 +23,7 @@ export default function Home() {
                     type="email"
                     autoComplete="email"
                     required
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
+                    className="mb-4 w-full py-2 border-2 border-primary rounded-2xl shadow active:border-primary"
                     placeholder="Email address"
                   />
                 </div>
@@ -49,7 +37,7 @@ export default function Home() {
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
+                    className="w-full py-2 border-2 border-primary rounded-2xl shadow active:border-primary"
                     placeholder="Password"
                   />
                 </div>
@@ -61,7 +49,7 @@ export default function Home() {
                     id="remember-me"
                     name="remember-me"
                     type="checkbox"
-                    className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+                    className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
                   />
                   <label
                     htmlFor="remember-me"
@@ -74,7 +62,7 @@ export default function Home() {
                 <div className="text-sm">
                   <a
                     href="#"
-                    className="font-medium text-green-600 hover:text-green-500"
+                    className="font-medium text-primary hover:text-primary"
                   >
                     Forgot your password?
                   </a>
@@ -85,7 +73,7 @@ export default function Home() {
             <div className="">
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                className="w-full py-2 text-white bg-secondary border-4 border-primary rounded-full shadow active:border-opacity-50 active:bg-opacity-50"
               >
                 Sign in
               </button>

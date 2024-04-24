@@ -10,7 +10,7 @@ webPush.setVapidDetails(
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method == "POST") {
-    const subscription = req.body;
+    const { subscription } = req.body;
 
     webPush
       .sendNotification(
