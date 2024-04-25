@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model alarm {
+  id           Int       @id @default(autoincrement())
+  sensor_id    Int
+  trigger_time DateTime? @db.Timestamp(0)
+  reset_time   DateTime? @db.Timestamp(0)
+  type         String    @db.VarChar(100)
+  sensor       sensor    @relation(fields: [sensor_id], references: [id], onDelete: Cascade, map: "alarms_sensor_FK")
+
+  @@index([sensor_id], map: "alarms_sensor_FK")
+}
+
+model home {
+  id      Int       @id @default(autoincrement())
+  name    String    @db.VarChar(25)
+  profile profile[]
+  room    room[]
+  sensor  sensor[]
+}
+
+model notification {
+  id        Int      @id @default(autoincrement())
+  datetime  DateTime @db.DateTime(0)
+  user_id   Int
+  sensor_id Int
+  profile   profile  @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "notification_ibfk_1")
+  sensor    sensor   @relation(fields: [sensor_id], references: [id], onDelete: Cascade, map: "notification_ibfk_2")
+
+  @@index([user_id], map: "notification_ibfk_1")
+  @@index([sensor_id], map: "notification_ibfk_2")
+}
+
+model profile {
+  id           Int            @id @default(autoincrement())
+  username     String         @db.VarChar(25)
+  home_id      Int
+  email        String         @db.VarChar(100)
+  notification notification[]
+  home         home           @relation(fields: [home_id], references: [id], onDelete: Cascade, map: "profile_ibfk_1")
+  user_room    user_room[]
+
+  @@index([home_id], map: "profile_ibfk_1")
+}
+
+model room {
+  id        Int         @id @default(autoincrement())
+  name      String      @db.VarChar(25)
+  home_id   Int
+  home      home        @relation(fields: [home_id], references: [id], onDelete: Cascade, map: "room_ibfk_1")
+  sensor    sensor[]
+  user_room user_room[]
+
+  @@index([home_id], map: "room_ibfk_1")
+}
+
+model sensor {
+  id           Int            @id @default(autoincrement())
+  room_id      Int
+  home_id      Int
+  lastseen     DateTime?      @db.Timestamp(0)
+  alarm        alarm[]
+  notification notification[]
+  home         home           @relation(fields: [home_id], references: [id], onDelete: Cascade, map: "sensor_ibfk_1")
+  room         room           @relation(fields: [room_id], references: [id], onDelete: Cascade, map: "sensor_ibfk_2")
+
+  @@index([home_id], map: "sensor_ibfk_1")
+  @@index([room_id], map: "sensor_ibfk_2")
+}
+
+model user_room {
+  id      Int     @id @default(autoincrement())
+  user_id Int
+  room_id Int
+  room    room    @relation(fields: [room_id], references: [id], onDelete: Cascade, map: "user_room_ibfk_1")
+  profile profile @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "user_room_ibfk_2")
+
+  @@index([room_id], map: "user_room_ibfk_1")
+  @@index([user_id], map: "user_room_ibfk_2")
+}
