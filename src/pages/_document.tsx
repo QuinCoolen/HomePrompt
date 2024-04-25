@@ -25,6 +25,8 @@ export default function Document() {
         <meta property="og:title" content="PWA App" />
         <meta property="og:description" content="Best PWA App in the world" />
         <meta property="og:site_name" content="PWA App" />
+        <link rel="stylesheet" href="https://use.typekit.net/wwe7iut.css" />
+
       </Head>
       <body>
         <Main />
