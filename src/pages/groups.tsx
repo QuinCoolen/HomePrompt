@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { base64ToUint8Array } from "@/utils/keys";
+import { base64ToUint8Array } from "@/utils/convert";
 
 export default function Groups() {
   const [isSubscribed, setIsSubscribed] = useState(false)
