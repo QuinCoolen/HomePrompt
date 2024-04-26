@@ -41,10 +41,10 @@ model notification {
 model profile {
   id           Int            @id @default(autoincrement())
   username     String         @db.VarChar(25)
-  home_id      Int
+  home_id      Int?
   email        String         @db.VarChar(100)
   notification notification[]
-  home         home           @relation(fields: [home_id], references: [id], onDelete: Cascade, map: "profile_ibfk_1")
+  home         home?          @relation(fields: [home_id], references: [id], onDelete: Cascade, map: "profile_ibfk_1")
   user_room    user_room[]
 
   @@index([home_id], map: "profile_ibfk_1")

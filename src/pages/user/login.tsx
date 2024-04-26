@@ -7,8 +7,6 @@ export default function Login() {
     <>
       <form
         className="mt-8 space-y-6 h-full flex flex-col justify-between text-center"
-        action="#"
-        method="POST"
       >
         <div className="space-y-6">
           <h1 className="text-2xl">Inloggen</h1>
