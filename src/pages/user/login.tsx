@@ -1,5 +1,6 @@
 import { LockClosedIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import { Input } from "@nextui-org/react";
+import { Button } from "../../components/Button";
 
 export default function Login() {
   return (
@@ -19,12 +20,7 @@ export default function Login() {
         </div>
 
         <div>
-          <button
-            type="submit"
-            className="w-full text-white text-xl bg-secondary border-4 border-primary rounded-full shadow active:border-opacity-50 active:bg-opacity-50"
-          >
-            Sign in
-          </button>
+          <Button type="submit">Inloggen</Button>
         </div>
       </form>
     </>
