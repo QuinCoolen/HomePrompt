@@ -4,6 +4,7 @@ import { Button } from "../../components/Button";
 import { UserIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 type Inputs = {
   email: string;
@@ -11,11 +12,11 @@ type Inputs = {
 }
 
 export default function Login() {
+  const router = useRouter()
+
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
   } = useForm<Inputs>()
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -31,6 +32,7 @@ export default function Login() {
       const { userId } = await response.json()
       console.log(userId);
       localStorage.setItem('userId', userId);
+      router.push('/groups')
     }
   }
 
