@@ -8,7 +8,7 @@ export default function Join() {
 
   return (
     <>
-      <form
+      <div
         className="mt-8 space-y-6 h-full flex flex-col justify-between text-center"
       >
         <div className="space-y-6">
@@ -21,7 +21,7 @@ export default function Join() {
         <div>
           <Button onClick={() => router.push('/groups/1')} type="submit">Save</Button>
         </div>
-      </form>
+      </div>
     </>
   );
 }

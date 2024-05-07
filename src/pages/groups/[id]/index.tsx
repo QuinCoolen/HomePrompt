@@ -26,7 +26,10 @@ export default function Index() {
         setRegistration(reg)
       })
     }
+  }, [])
 
+  const subscribeHandler = async (event: any) => {
+    event.preventDefault()
     if (!registration) {
       console.error('service worker not ready')
       return
@@ -41,10 +44,10 @@ export default function Index() {
       userVisibleOnly: true,
       applicationServerKey: base64ToUint8Array(process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY)
     })
-    // TODO: you should call your API to save subscription data on server in order to send web push notification from server
+
     setSubscription(sub)
     setIsSubscribed(true)
-  }, [])
+  }
 
   const sendNotification = async (event: any) => {
     event.preventDefault()
@@ -96,7 +99,7 @@ export default function Index() {
         </div>
       </div>
       <div className="py-4">
-        <CustomButton onClick={() => sendNotification(event)}>Check</CustomButton>
+        <CustomButton onClick={isSubscribed ? () => sendNotification(event) : () => subscribeHandler(event)}>Check</CustomButton>
       </div>
       <nav className="border-t-3 border-primary h-20 w-screen flex flex-row gap-[1px]">
         <Button as={Link} href="/groups/1" className="bg-secondary text-white w-full h-full rounded-none"><HomeIcon width={30}></HomeIcon></Button>
