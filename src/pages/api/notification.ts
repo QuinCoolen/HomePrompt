@@ -16,8 +16,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       .sendNotification(
         subscription,
         JSON.stringify({
-          title: "Hello Web Push",
-          message: "Your web push notification is here!",
+          title: "Woonkamer",
+          message: "De lampen in de woonkamer staan te lang aan",
         })
       )
       .then((response: any) => {

@@ -1,8 +1,11 @@
 import { UserGroupIcon } from "@heroicons/react/24/solid";
 import { Input } from "@nextui-org/react";
 import { Button } from "../../components/Button";
+import { useRouter } from "next/router";
 
 export default function Create() {
+  const router = useRouter()
+
   return (
     <>
       <form
@@ -16,7 +19,7 @@ export default function Create() {
         </div>
 
         <div>
-          <Button type="submit">Save</Button>
+          <Button onClick={() => router.push('/groups/1')} type="submit">Save</Button>
         </div>
       </form>
     </>

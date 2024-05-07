@@ -9,7 +9,7 @@ export const Button = ({ children, onClick, type }: ButtonProps) => {
     <button
       type={type || "button"}
       onClick={onClick}
-      className="w-full text-white text-xl bg-secondary border-4 border-primary rounded-full shadow active:border-opacity-50 active:bg-opacity-50"
+      className="mb-4 w-full text-white text-xl bg-secondary border-4 border-primary rounded-full shadow active:border-opacity-50 active:bg-opacity-50"
     >
       {children}
     </button>
