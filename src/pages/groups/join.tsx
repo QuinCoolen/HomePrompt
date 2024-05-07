@@ -1,7 +1,6 @@
-import { UserGroupIcon } from "@heroicons/react/24/solid";
 import { QrCodeIcon } from "@heroicons/react/24/solid";
-import { UserPlusIcon } from "@heroicons/react/24/solid";
-import { Button, Input } from "@nextui-org/react";
+import { Input } from "@nextui-org/react";
+import { Button } from "../../components/Button";
 
 export default function Join() {
   return (
